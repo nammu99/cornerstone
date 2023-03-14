@@ -14,7 +14,7 @@ provider "aws" {
   region  = "us-west-1"
 }
 
-resource "aws_instance" "california_server" {
+resource "aws_instance" "managedNode_Ansible_server" {
   ami           = "ami-060d3509162bcc386"
   instance_type = "t2.micro"
   key_name = "nameera"
@@ -23,7 +23,21 @@ resource "aws_instance" "california_server" {
   
 
   tags = {
-  Name = "AnsibleTerraform"
+  Name = "AnsibleManagedTerraform"
+  }
+
+  }
+
+  resource "aws_instance" "controlNode_ansible_server-1" {
+  ami           = "ami-060d3509162bcc386"
+  instance_type = "t2.micro"
+  key_name = "nameera"
+  user_data = file("ansible.sh")
+  security_groups = ["default"]
+  
+
+  tags = {
+  Name = "AnsibleControlTerraform"
   }
   }
   
