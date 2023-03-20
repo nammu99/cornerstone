@@ -3,7 +3,7 @@ const http = require('http');
 const port = 3030;
 const requestHandler = (request, response) => {
 console.log(request.url);
-response.end("Hello Node.js Server HEHE!");
+response.end("Hello Node.js Server");
 };
 const server = http.createServer(requestHandler);
 server.listen(port, (err) => {
